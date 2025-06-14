@@ -29,16 +29,17 @@ class MP3Handler(FileSystemEventHandler):
         filename = os.path.basename(event.src_path)
         full_path = os.path.abspath(event.src_path)
         print(f"\n[🎧] Yeni dosya bulundu: {filename}")
-        print(f"[🧩] Tam yol: {full_path}")
-
+        print(f"[🧩] Tam yol: {full_path}")  
         # Dosya tamamen kopyalanmadan işleme başlamamak için bekle
         time.sleep(2)
+        print(f"[🪄]Transkripsiyon başladı!")
+  
 
         try:
             start_time = time.time()
             result = model.transcribe(full_path, language="turkish")
             elapsed = round(time.time() - start_time, 2)
-            print(f"⏱ Transkripsiyon süresi: {elapsed} saniye")
+            print(f"[⏱️] Transkripsiyon süresi: {elapsed} saniye")
 
             # Sonuçları yaz
             output_path = os.path.join(output_folder, os.path.splitext(filename)[0] + ".txt")
