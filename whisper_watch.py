@@ -16,9 +16,10 @@ os.makedirs(input_folder, exist_ok=True)
 os.makedirs(output_folder, exist_ok=True)
 
 # Whisper modelini yükle
-print("[📦] Whisper modeli yükleniyor...")
-model = whisper.load_model("large")
-print("[✅] Model yüklendi.")
+usedModel = "large" #burası base - small - medium - large seçeneklerinden biri olabilir.
+print("[📦] Whisper " + usedModel + " modeli yükleniyor...")
+model = whisper.load_model(usedModel)
+print("[✅] " + usedModel + " model yüklendi.")
 
 # Watchdog sınıfı
 class MP3Handler(FileSystemEventHandler):
@@ -32,7 +33,7 @@ class MP3Handler(FileSystemEventHandler):
         print(f"[🧩] Tam yol: {full_path}")  
         # Dosya tamamen kopyalanmadan işleme başlamamak için bekle
         time.sleep(2)
-        print(f"[🪄]Transkripsiyon başladı!")
+        print(f"[🪄] Transkripsiyon başladı!")
   
 
         try:
